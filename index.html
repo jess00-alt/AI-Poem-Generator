@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
@@ -15,14 +16,14 @@
     </header>
 
     <main>
-        <form>
+        <form id = "poem-generator-form">
             <input type="text" placeholder="Enter a poem topic" autofocus required autocomplete="off" class = "prompt"/>
             <input type="submit" class = "submit-prompt"/>
 
         </form>
 
-        <div class = "poem">
-            The poem will go here 
+        <div class = "poem" id = "poem">
+    
         </div>
     </main>
    
@@ -30,7 +31,7 @@
 
 </body>
 
-<script src = "script.js"></script>
+<script src = "src/script.js"></script>
 
 
 
