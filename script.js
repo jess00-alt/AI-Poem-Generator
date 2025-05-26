@@ -1,13 +1,30 @@
+function displayPoem(response) {
+    console.log("poem generated");
+    let plainText = response.data.answer;
+    new Typewriter("#poem", {
+        strings: plainText,
+        autoStart: true,
+        delay: 1,
+        cursor: ""
+    });
+
+}
+
 function generatePoem(event) {
 event.preventDefault();
 
-new Typewriter("#poem", {
-  strings: ["Roses are red, violets are blue..."
-],
-  autoStart: true,
-  delay: 1,
-  cursor: ""
-});
+let userInput = document.querySelector("#user-prompt");
+let apiKey = "o7ae8422tbf7a3d6181c62ca5104de1d";
+let prompt = `User instructions: Generate a poem about ${userInput.value}`;
+let context= "You are a romantic poem expert and love to write short poems. You will always generate poems with this exact format and structure: Only generate a 4 line poem. Return it in valid HTML. Do not use <html>, <head> or <body> tags. Use exactly this structure <h1> title </h1> (small-sized)   <p>First line of the poem</p>   <p>Second line of the poem</p>....   <p>Fourth line of the poem</p>. Then sign the poem with SheCodes AI at the bottom of the poem with the <strong> element and always style it with the Puce colour. Do not change the layout, structure, or tag order.  Make sure to follow the user instructions."
+let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`
+
+console.log("generating poem...");
+console.log(`Prompt: ${prompt}`);
+console.log(`Context: ${context}`);
+
+axios.get(apiUrl).then(displayPoem);
+
 }
 
 let poemFormElement= document.querySelector("#poem-generator-form");
